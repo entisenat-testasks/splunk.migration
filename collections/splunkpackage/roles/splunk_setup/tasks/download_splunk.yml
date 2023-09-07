@@ -1,0 +1,22 @@
+---
+- name: Ensure Splunk Directory Exists
+  file:
+    path: "{{ splunk_home }}"
+    state: directory
+
+- name: Download Splunk
+  get_url:
+    url: "https://...com/splunk.tar.gz"
+    dest: "{{ splunk_home }}/splunk.tar.gz"
+    validate_certs: no 
+
+- name: Unzip Splunk
+  ansible.builtin.unarchive:
+    src: "{{ splunk_home }}/splunk.tar.gz"
+    dest: "{{ splunk_home }}"
+    remote_src: yes
+
+- name: Remove Splunk Archive
+  file:
+    path: "{{ splunk_home }}/splunk.tar.gz"
+    state: absent

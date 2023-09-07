@@ -1,0 +1,22 @@
+---
+
+- name: Copy SSL/TLS Certificates
+  copy:
+    src: /path/to/ssl_cert.pem
+    dest: "{{ splunk_ssl_cert_path }}"
+
+- name: Copy SSL/TLS Key
+  copy:
+    src: /path/to/ssl_key.pem
+    dest: "{{ splunk_ssl_key_path }}"
+
+- name: Create Splunk Secrets Directory
+  file:
+    path: "{{ splunk_secrets_dir }}"
+    state: directory
+
+- name: Create SSL/TLS Password File
+  copy:
+    content: "{{ splunk_ssl_password }}"
+    dest: "{{ splunk_secrets_dir }}/splunk_password"
+  no_log: true  # Hide password from logs

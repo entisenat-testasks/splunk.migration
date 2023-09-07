@@ -1,0 +1,23 @@
+---
+
+- name: Configure Splunk REST API with SSL
+  become_user: splunk  # Replace with the Splunk user if different
+  lineinfile:
+    path: /opt/splunk/etc/system/local/web.conf  # Adjust the path as needed
+    regexp: "^(httpport|enableSplunkWebSSL|privKeyPath|caCertPath|serverCert|sslVersions) ="
+    line: |
+      httpport = 443
+      enableSplunkWebSSL = true
+      privKeyPath = /path/to/your/private/key.key  # Replace with your private key path
+      caCertPath = /path/to/your/ca-certificate.pem  # Replace with your CA certificate path
+      serverCert = /path/to/your/server-certificate.pem  # Replace with your server certificate path
+      sslVersions = tls1.2, tls1.3  # Specify supported SSL/TLS versions
+
+
+# - name: Configure REST API Data Collection
+#   lineinfile:
+#     path: "{{ splunk_inputs_conf }}"
+#     line: |
+#       [http://localhost:8080]
+#       disabled = false
+#       index = rest_api_logs

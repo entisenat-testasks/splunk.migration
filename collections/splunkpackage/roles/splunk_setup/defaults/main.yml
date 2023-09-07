@@ -1,0 +1,14 @@
+---
+# defaults file for splunk_setup
+
+splunk_version: "8.2.2"  
+splunk_home: "/opt/splunk"
+splunk_admin_password: "your_admin_password"
+splunk_inputs_conf: "/opt/splunk/etc/system/local/inputs.conf"
+splunk_saved_searches: "/opt/splunk/etc/system/local"
+splunk_apps_dir: "/opt/splunk/etc/apps"
+splunk_license_path: "/opt/splunk/etc/licenses"
+splunk_ssl_cert_path: "/opt/splunk/etc/auth/server.pem"
+splunk_ssl_key_path: "/opt/splunk/etc/auth/server-key.pem"
+splunk_secrets_dir: "/opt/splunk/etc/auth/secrets"
+splunk_rest_endpoint: "https://your-splunk-rest-api-endpoint"

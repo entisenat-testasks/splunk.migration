@@ -1,0 +1,22 @@
+---
+
+- name: Install Java (OpenJDK)
+  apt:
+    name: openjdk-11-jdk
+    state: present
+
+# and others ...
+
+
+
+
+
+# - name: Download and Install Splunk Apps
+#   get_url:
+#     url: "https://...com/splunk_app.tar.gz"
+#     dest: "{{ splunk_apps_dir }}"
+#     validate_certs: no  # to be checked
+#   unarchive:
+#     src: "{{ splunk_apps_dir }}/splunk_app.tar.gz"
+#     dest: "{{ splunk_apps_dir }}"
+#     remote_src: yes

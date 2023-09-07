@@ -1,0 +1,10 @@
+---
+# handlers file for splunk_setup
+
+- name: restart splunkforwarder
+  win_service:
+    name: SplunkForwarder
+    state: restarted
+
+- name: Restart Splunk
+  command: "{{ splunk_home }}/bin/splunk restart"

@@ -1,0 +1,44 @@
+# splunk configuration check
+---
+
+- name: Schedule Splunk Config Check
+  hosts: [prod]
+  become: yes
+  tasks:
+    - name: Create a cron job to check Splunk config
+      cron:
+        name: Check Splunk Config
+        job: "{{ path_to_script }}/check_splunk_config.sh"   
+        minute: 0
+        hour: 0
+        state: present
+      environment:
+        PATH: "{{ ansible_env.PATH }}:/usr/local/bin:/usr/bin:/bin"
+      tags:
+        - config_check
+
+- name: Run Splunk Config Check
+  hosts: [prod]
+  become: yes
+  tasks:
+    - name: Ensure the script is present
+      copy:
+        src: config_check.sh
+        dest: "{{ path_to_script }}/check_splunk_config.sh"
+        mode: '0755'
+      tags:
+        - config_check
+
+    - name: Execute the script
+      command: "{{ path_to_script }}/check_splunk_config.sh"
+      register: check_result
+      ignore_errors: yes
+      tags:
+        - config_check
+
+    - name: Notify if config check fails
+      debug:
+        msg: "Splunk configuration check failed with error: {{ check_result.stdout }}"
+      when: check_result.rc != 0
+      tags:
+        - config_check

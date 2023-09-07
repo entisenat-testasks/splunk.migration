@@ -1,0 +1,7 @@
+---
+
+- name: Splunk setup
+  hosts: [prod]
+
+  roles:
+   - splunk_setup

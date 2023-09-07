@@ -1,0 +1,16 @@
+---
+
+- name: Copy server.conf
+  template:
+    src: server.conf.j2   # The source template file
+    dest: "{{ splunk_home }}/etc/system/local/server.conf"
+
+- name: Copy inputs.conf
+  template:
+    src: inputs.j2   
+    dest: "{{ splunk_home }}/etc/system/local/inputs.conf"
+
+- name: Copy saved searches
+  template:
+    src: savedsearches.conf.j2   # The source template file
+    dest: "{{ splunk_saved_searches }}/savedsearches.conf"

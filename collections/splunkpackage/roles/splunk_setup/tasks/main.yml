@@ -1,0 +1,19 @@
+---
+
+- name: Download Splunk
+  include_tasks: download_splunk.yml
+
+- name: Install Dependencies
+  include_tasks: install_dependencies.yml
+
+- name: Configure Rest Api
+  include_tasks: configure_rest_api.yml
+
+- name: Configure ssl/tls
+  include_tasks: configure_ssl_tls.yml
+
+- name: Configure Splunk
+  include_tasks: configure_splunk.yml
+
+- name: Start Splunk
+  include_tasks: start_splunk.yml
