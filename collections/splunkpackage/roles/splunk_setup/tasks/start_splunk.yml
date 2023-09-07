@@ -1,3 +1,4 @@
+# Starting Splunk
 ---
 
 - name: Start Splunk Service
@@ -23,7 +24,7 @@
 - name: Enable REST API Integration
   command: "{{ splunk_home }}/bin/splunk http-event-collector enable"
 
-- name: Configure SSL/TLS
-  copy:
-    src: /path/to/ssl_cert.pem
-    dest: "{{ splunk_home }}/etc/auth/server.pem"
+# - name: Configure SSL/TLS
+#   copy:
+#     src: /path/to/ssl_cert.pem
+#     dest: "{{ splunk_home }}/etc/auth/server.pem"

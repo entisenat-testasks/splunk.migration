@@ -1,4 +1,6 @@
+# Downloading the sources and placing them to correct directory
 ---
+
 - name: Ensure Splunk Directory Exists
   file:
     path: "{{ splunk_home }}"

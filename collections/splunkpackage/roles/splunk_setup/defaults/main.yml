@@ -1,5 +1,6 @@
 ---
 # defaults file for splunk_setup
+# Is better to use "Vault" for passwords and certificates
 
 splunk_version: "8.2.2"  
 splunk_home: "/opt/splunk"

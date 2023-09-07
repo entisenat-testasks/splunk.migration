@@ -1,3 +1,4 @@
+# In this task can be defined whatever needed
 ---
 
 - name: Install Java (OpenJDK)

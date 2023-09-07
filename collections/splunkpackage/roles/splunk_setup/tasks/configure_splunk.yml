@@ -1,8 +1,10 @@
+# Transfering the configuration files to Splunk directories
+# Is better to use in Prod a definitive storage place or Vault to store the configs instead of using templates
 ---
 
 - name: Copy server.conf
   template:
-    src: server.conf.j2   # The source template file
+    src: server.conf.j2
     dest: "{{ splunk_home }}/etc/system/local/server.conf"
 
 - name: Copy inputs.conf
@@ -12,5 +14,5 @@
 
 - name: Copy saved searches
   template:
-    src: savedsearches.conf.j2   # The source template file
+    src: savedsearches.conf.j2
     dest: "{{ splunk_saved_searches }}/savedsearches.conf"

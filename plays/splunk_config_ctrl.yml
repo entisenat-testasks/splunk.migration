@@ -1,4 +1,5 @@
 # splunk configuration check
+# made by using the bash script placed in files directory
 ---
 
 - name: Schedule Splunk Config Check
